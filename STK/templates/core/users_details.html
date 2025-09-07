@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+{% block content %}
+<h1>{{ item.name }}</h1>
+<ul>
+  <li>Email: {{ item.email }}</li>
+  <li>Plan mensual: {{ item.plan_mensual }}</li>
+  <li>Rol: {{ item.rol }}</li>
+  <li>Status: {{ item.status }}</li>
+</ul>
+{% if request.user.is_staff %}
+<p><a href="{% url 'users_update' item.pk %}">Editar</a></p>
+{% endif %}
+<p><a href="{% url 'users_list' %}">Volver</a></p>
+{% endblock %}
